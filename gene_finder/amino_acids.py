@@ -29,3 +29,5 @@ aa_table = {}
 for i in range(len(aa)):
     for codon in codons[i]:
         aa_table[codon] = aa[i]
+
+print aa_table['CGA']
