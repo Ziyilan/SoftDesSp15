@@ -1,4 +1,5 @@
-""" A program that stores and updates a counter using a Python pickle file"""
+""" A program that stores and updates a counter using a Python pickle file    
+Author: Ziyi Lan"""
 
 from os.path import exists
 import sys
@@ -29,7 +30,22 @@ def update_counter(file_name, reset=False):
 	>>> update_counter('blah2.txt')
 	2
 	"""
-	pass
+	if exists(file_name)==False or reset==True:
+		counterfile =open(file_name, 'w')
+		dump(1, counterfile)
+		counterfile.close()
+		return 1
+
+	else:
+		counterfile =open(file_name, 'r')
+		c=load(counterfile)+1
+		counterfile.close()
+		counterfile =open(file_name, 'w')
+		dump(c, counterfile)
+		counterfile.close()
+		return c
+
+
 
 if __name__ == '__main__':
 	if len(sys.argv) < 2:
